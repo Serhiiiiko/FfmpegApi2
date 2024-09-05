@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  ffmpegapi2:
+    build:
+      context: .
+      dockerfile: FfmpegApi2/Dockerfile
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - vosk-en
+
+  vosk-en:
+    image: alphacep/kaldi-en
+    ports:
+      - "2700:2700"
